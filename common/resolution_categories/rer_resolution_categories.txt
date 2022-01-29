@@ -1,0 +1,18 @@
+# Resolution Categories for Galactic Community
+
+resolution_category_rer = {
+	group = rer_raid_rules
+	icon = "GFX_rer_icon"
+
+	resolution_types = {
+		"resolution_rer_repeal_all"
+#		"resolution_rer_repeal_zero_raid_policy"
+		"resolution_rer_zero_raid_policy"
+#		"resolution_rer_repeal_minimal_snatches"
+		"resolution_rer_minimal_snatches"
+#		"resolution_rer_repeal_barbarous_plunder"
+		"resolution_rer_barbarous_plunder"
+#		"resolution_rer_repeal_honor_before_reason"
+		"resolution_rer_honor_before_reason"
+	}
+}

@@ -1,0 +1,36 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_rer_icon"
+		texturefile = "gfx/interface/icons/resolutions/resolution_rer_icon.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_rer_repeal"
+		texturefile = "gfx/interface/icons/resolutions/resolution_rer_repeal.dds"
+	}
+
+	spriteType = {
+		name = "GFX_rer_light"
+		texturefile = "gfx/interface/icons/resolutions/resolution_rer_light.dds"
+	}
+
+	spriteType = {
+		name = "GFX_rer_heavy"
+		texturefile = "gfx/interface/icons/resolutions/resolution_rer_heavy.dds"
+	}
+
+	spriteType = {
+		name = "GFX_rer_honor"
+		texturefile = "gfx/interface/icons/resolutions/resolution_rer_honor.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_tech_rer_raid_1"
+		texturefile = "gfx/interface/icons/technologies/tech_rer_raid_1.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_tech_rer_raid_2"
+		texturefile = "gfx/interface/icons/technologies/tech_rer_raid_2.dds"
+	}
+}

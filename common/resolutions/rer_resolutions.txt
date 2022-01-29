@@ -1,0 +1,664 @@
+# Rer raid
+
+resolution_rer_repeal_all = {
+	icon = "GFX_rer_repeal"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_repeal_all_effect_success
+
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_failed days = 3600 }
+		}
+	}
+
+	potential = {
+		OR = {
+			is_active_resolution = resolution_rer_zero_raid_policy
+			is_active_resolution = resolution_rer_minimal_snatches
+			is_active_resolution = resolution_rer_barbarous_plunder
+			is_active_resolution = resolution_rer_honor_before_reason
+		}
+	}
+	
+	allow = {
+
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 4.5
+		modifier = {
+			factor = 5
+			is_active_resolution = resolution_rer_zero_raid_policy
+			OR = {
+				has_policy_flag = policy_raidresource_light
+				has_policy_flag = policy_raidresource_heavy
+				has_policy_flag = policy_raidresource_honor
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_active_resolution = resolution_rer_minimal_snatches
+			OR = {
+				has_policy_flag = policy_raidresource_heavy
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_active_resolution = resolution_rer_barbarous_plunder
+			OR = {
+				has_policy_flag = policy_raidresource_outlaw
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_active_resolution = resolution_rer_honor_before_reason
+			NOT = {
+				has_policy_flag = policy_raidresource_honor
+			}
+		}
+	}
+}
+
+resolution_rer_repeal_zero_raid_policy = {
+	icon = "GFX_rer_repeal"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_repeal_zero_raid_policy_effect_success
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_failed days = 3600 }
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_rer_zero_raid_policy"
+	}
+
+	allow = {
+
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+resolution_rer_zero_raid_policy = {
+	icon = "GFX_rer_repeal"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_zero_raid_policy_effect_success
+
+		hidden_effect = {
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = { flag = rer_resolution_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_failed days = 3600 }
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			has_policy_flag = policy_raidresource_outlaw
+		}
+		modifier = {
+			resolution_rer_zero_raid_policy = 1
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			OR = {
+				has_policy_flag = policy_raidresource_light
+				has_policy_flag = policy_raidresource_heavy
+				has_policy_flag = policy_raidresource_honor
+			}
+		}
+		modifier = {
+			resolution_rer_penalties = 3
+		}
+	}
+
+	potential = {
+
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_rer_zero_raid_policy" }
+		}
+	}
+	
+	breach = {
+		
+	}
+
+	ai_weight = {
+		weight = 5
+		modifier = {
+			factor = 2
+			has_ethic = "ethic_pacifist"
+		}
+		modifier = {
+			factor = 1.25
+			years_of_peace = {
+				value > 9
+			}
+		}
+		modifier = {
+			factor = 1.25
+			years_of_peace = {
+				value > 19
+			}
+		}
+		modifier = {
+			factor = 1.25
+			years_of_peace = {
+				value > 29
+			}
+		}
+		modifier = {
+			factor = 3
+			has_ethic = "ethic_fanatic_pacifist"
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = xenophobic_isolationists
+				has_ai_personality = peaceful_traders
+			}
+			
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = "ethic_militarist"
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = "ethic_fanatic_militarist"
+		}
+	}
+}
+
+resolution_rer_repeal_minimal_snatches = {
+	icon = "GFX_rer_light"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_repeal_minimal_snatches_repeal_effect_success
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_failed days = 3600 }
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_rer_minimal_snatches"
+	}
+
+	allow = {
+
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+resolution_rer_minimal_snatches = {
+	icon = "GFX_rer_light"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_minimal_snatches_effect_success
+		hidden_effect = {
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = { flag = rer_resolution_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_failed days = 3600 }
+		}
+	}
+
+	triggered_modifier = {
+		potential = {
+			OR = {
+				has_policy_flag = policy_raidresource_heavy
+			}
+		}
+		modifier = {
+			resolution_rer_penalties = 1
+		}
+	}
+
+	potential = {
+
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_rer_minimal_snatches" }
+		}
+		
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.5
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_ethic = "ethic_xenophile"
+				has_ethic = "ethic_fanatic_xenophile"
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = "ethic_pacifist"
+				has_ethic = "ethic_fanatic_pacifist"
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ethic = "ethic_xenophobe"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		modifier = {
+			factor = 0.5
+			has_ethic = "ethic_militarist"
+		}
+		modifier = {
+			factor = 0.25
+			has_ethic = "ethic_fanatic_militarist"
+		}
+		modifier = {
+			factor = 1.1
+			years_of_peace = {
+				value > 9
+			}
+		}
+		modifier = {
+			factor = 1.1
+			years_of_peace = {
+				value > 19
+			}
+		}
+		modifier = {
+			factor = 1.1
+			years_of_peace = {
+				value > 29
+			}
+		}
+	}
+}
+
+resolution_rer_repeal_barbarous_plunder = {
+	icon = "GFX_rer_heavy"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_repeal_barbarous_plunder_repeal_effect_success
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_failed days = 3600 }
+		}
+	}
+
+	potential = {
+		is_active_resolution = "resolution_rer_barbarous_plunder"
+	}
+
+	allow = {
+
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+resolution_rer_barbarous_plunder = {
+	icon = "GFX_rer_heavy"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_barbarous_plunder_effect_success
+		hidden_effect = {
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = { flag = rer_resolution_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_failed days = 3600 }
+		}
+	}
+
+	potential = {
+
+	}
+	
+	allow = {
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_rer_barbarous_plunder" }
+		}
+		
+	}
+	
+	triggered_modifier = {
+		potential = {
+			has_policy_flag = policy_raidresource_outlaw
+		}
+		modifier = {
+			resolution_rer_penalties = 2
+		}
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 5.5
+		modifier = {
+			factor = 2
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_barbaric_despoilers
+				has_ascension_perk = ap_nihilistic_acquisition 
+			}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_ethic = "ethic_xenophobe"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			has_ethic = "ethic_militarist"
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = "ethic_fanatic_militarist"
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ethic = "ethic_pacifist"
+				has_ethic = "ethic_fanatic_pacifist"
+			}
+		}
+		modifier = {
+			factor = 0.8
+			OR = {
+				has_ethic = "ethic_xenophile"
+				has_ethic = "ethic_fanatic_xenophile"
+			}
+		}
+		modifier = {
+			factor = 0.9
+			years_of_peace = {
+				value > 19
+			}
+		}
+		modifier = {
+			factor = 0.9
+			years_of_peace = {
+				value > 29
+			}
+		}
+		modifier = {
+			factor = 0.9
+			years_of_peace = {
+				value > 39
+			}
+		}
+	}
+}
+
+resolution_rer_repeal_honor_before_reason = {
+	icon = "GFX_rer_honor"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_repeal_honor_before_reason_effect_success
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_repeal_failed days = 3600 }
+		}
+	}
+
+	
+
+	potential = {
+		is_active_resolution = "resolution_rer_honor_before_reason"
+	}
+
+	allow = {
+
+	}
+	
+	breach = {
+
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+resolution_rer_honor_before_reason = {
+	icon = "GFX_rer_honor"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = 150
+		}
+	}
+	target = no
+
+	effect = {
+		custom_tooltip = resolution_rer_honor_before_reason_effect_success
+
+		hidden_effect = {
+			set_global_flag = galactic_community_resolution_passed
+			set_timed_country_flag = { flag = rer_resolution_passed days = 3600 }
+		}
+	}
+
+	fail_effects = {
+		hidden_effect = {
+			set_timed_country_flag = { flag = rer_resolution_failed days = 3600 }
+		}
+	}
+
+	potential = {
+
+	}
+
+	triggered_modifier = {
+		potential = {
+			NOT = {
+				has_policy_flag = policy_raidresource_honor
+			}
+		}
+		modifier = {
+			resolution_rer_penalties = 2
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "resolution_already_active"
+			NOT = { is_active_resolution = "resolution_rer_honor_before_reason" }
+		}
+		NOR = {
+			has_ethic = "ethic_xenophobe"
+			has_ethic = "ethic_fanatic_xenophobe"
+			has_ethic = "ethic_pacifist"
+			has_ethic = "ethic_fanatic_pacifist"
+			has_ethic = "ethic_gestalt_consciousness"
+		}
+	}
+	
+	breach = {
+		
+	}
+
+	ai_weight = {
+		weight = 4
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = "ethic_militarist"
+				has_ethic = "ethic_fanatic_militarist"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = policy_raidresource_honor
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ethic = "ethic_xenophobe"
+				has_ethic = "ethic_fanatic_xenophobe"
+				has_ethic = "ethic_pacifist"
+				has_ethic = "ethic_fanatic_pacifist"
+				has_ethic = "ethic_gestalt_consciousness"
+			}
+		}
+		modifier = {
+			factor = 2
+			is_at_war = yes
+		}
+	}
+}
