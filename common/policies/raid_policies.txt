@@ -16,8 +16,7 @@ policy_raidresource = {
 	potential = {
 		OR = {
 			is_country_type = default
-			is_country_type = awakened_fallen_empire
-			is_country_type = fallen_empire
+			is_fallen_empire = yes
 		}	
 	}
 
@@ -36,17 +35,11 @@ policy_raidresource = {
 			factor = 5
 			modifier = {
 				factor = 2
-				OR = {
-					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"
-				}
+				is_pacifist = yes
 			}
 			modifier = {
 				factor = 0.5
-				OR = {
-					has_ethic = "ethic_xenophobe"
-					has_ethic = "ethic_fanatic_xenophobe"
-				}
+				is_xenophobe = yes
 			}
 			modifier = {
 				factor = 2
@@ -68,16 +61,12 @@ policy_raidresource = {
 		valid = {
 			OR = {
 				has_ethic = "ethic_gestalt_consciousness"
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
+				is_militarist = yes
+				is_xenophobe = yes
 			}
 			NOR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"
+				is_pacifist = yes
+				is_xenophile = yes
 			}
 		}
 		
@@ -85,25 +74,15 @@ policy_raidresource = {
 			factor = 5
 			modifier = {
 				factor = 10
-				OR = {
-					has_valid_civic = "civic_hive_devouring_swarm"
-					has_valid_civic = "civic_machine_terminator"
-					has_valid_civic = "civic_fanatic_purifiers"
-				}
+				is_homicidal = yes
 			}
 			modifier = {
 				factor = 2
-				OR = {
-					has_ethic = "ethic_xenophobe"
-					has_ethic = "ethic_fanatic_xenophobe"
-				}
+				is_xenophobe = yes
 			}
 			modifier = {
 				factor = 1.5
-				OR = {
-					has_ethic = "ethic_militarist"
-					has_ethic = "ethic_fanatic_militarist"
-				}
+				is_militarist = yes
 			}
 			modifier = {
 				factor = 2
@@ -139,15 +118,12 @@ policy_raidresource = {
 		
 		valid = {
 			OR = {
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"
+				is_militarist = yes
 				is_active_resolution = resolution_rer_honor_before_reason
 			}
 			NOR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
+				is_xenophobe = yes
+				is_pacifist = yes
 				has_ethic = "ethic_gestalt_consciousness"
 			}
 		}
@@ -187,11 +163,7 @@ policy_raidresource = {
 		}
 #28		
 		valid = {
-			NOR = {
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
-				has_valid_civic = "civic_fanatic_purifiers"
-			}
+			is_homicidal = no
 		}
 
 		AI_weight = {

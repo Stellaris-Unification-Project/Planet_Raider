@@ -329,24 +329,15 @@ resolution_rer_minimal_snatches = {
 		}
 		modifier = {
 			factor = 1.5
-			OR = {
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"
-			}
+			is_xenophile = yes
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-			}
+			is_pacifist = yes
 		}
 		modifier = {
 			factor = 0.5
-			OR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
+			is_xenophobe = yes
 		}
 		modifier = {
 			factor = 0.5
@@ -483,10 +474,7 @@ resolution_rer_barbarous_plunder = {
 		}
 		modifier = {
 			factor = 1.5
-			OR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-			}
+			is_xenophobe = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -498,17 +486,11 @@ resolution_rer_barbarous_plunder = {
 		}
 		modifier = {
 			factor = 0.25
-			OR = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-			}
+			is_pacifist = yes
 		}
 		modifier = {
 			factor = 0.8
-			OR = {
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"
-			}
+			is_xenophile = yes
 		}
 		modifier = {
 			factor = 0.9
@@ -621,10 +603,8 @@ resolution_rer_honor_before_reason = {
 			NOT = { is_active_resolution = "resolution_rer_honor_before_reason" }
 		}
 		NOR = {
-			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
+			is_xenophobe = yes
+			is_pacifist = yes
 			has_ethic = "ethic_gestalt_consciousness"
 		}
 	}
@@ -637,10 +617,7 @@ resolution_rer_honor_before_reason = {
 		weight = 4
 		modifier = {
 			factor = 2
-			OR = {
-				has_ethic = "ethic_militarist"
-				has_ethic = "ethic_fanatic_militarist"
-			}
+			is_militarist = yes
 		}
 		modifier = {
 			factor = 1.5
@@ -649,10 +626,8 @@ resolution_rer_honor_before_reason = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_ethic = "ethic_xenophobe"
-				has_ethic = "ethic_fanatic_xenophobe"
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
+				is_xenophobe = yes
+				is_pacifist = yes
 				has_ethic = "ethic_gestalt_consciousness"
 			}
 		}

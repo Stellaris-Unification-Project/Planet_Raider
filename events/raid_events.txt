@@ -425,8 +425,7 @@ country_event = {
 			is_at_war_with = root
 			OR = {
 				is_country_type = default
-				is_country_type = awakened_fallen_empire
-				is_country_type = fallen_empire
+				is_fallen_empire = yes
 				is_country_type = primitive
 			}
 		}
@@ -1377,11 +1376,7 @@ country_event = {
                             modifier = {
 								factor = 2
 								event_target:raidresource_raid_empire_attacker = {
-									OR = {
-										has_valid_civic = civic_fanatic_purifiers
-										has_valid_civic = civic_hive_devouring_swarm
-										has_valid_civic = civic_machine_terminator
-									}
+									is_homicidal = yes
 								}
 							}
 							modifier = {
@@ -1425,14 +1420,10 @@ country_event = {
 							if = {
 								limit = {
 									prev = {
-										NOT = {
-											OR = {
-												has_valid_civic = civic_fanatic_purifiers
-												has_valid_civic = civic_hive_devouring_swarm
-												has_valid_civic = civic_machine_terminator
+										NOR = {
+												is_homicidal = yes
 												has_valid_civic = civic_criminal_heritage
-											}									
-										}
+}
 									}
 								}
 								root = {
@@ -1442,11 +1433,7 @@ country_event = {
 							if = {
 								limit = {
 									root = {
-										OR = {
-											has_valid_civic = civic_fanatic_purifiers
-											has_valid_civic = civic_hive_devouring_swarm
-											has_valid_civic = civic_machine_terminator
-										}
+										is_homicidal = yes
 									}
 								}
 								if = {
@@ -1852,10 +1839,7 @@ country_event = {
 				NOT = { ROOT = { is_overlord_to = FROM } }
 				NOT = { has_policy_flag = policy_raidresource_heavy }
 				NOT = {
-					OR = {
-						has_ethic = "ethic_militarist"
-						has_ethic = "ethic_fanatic_militarist"
-					}
+					is_militarist = yes
 				}
 				is_country_type = default
 			}
